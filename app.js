@@ -34,7 +34,7 @@ app.use(express.static(join(__dirname, 'public')));
 
 app.use(
   expressSession({
-    secret: process.env.SESSION_SECRET,
+    secret: 'WOOF',
     resave: true,
     saveUninitialized: false,
     cookie: {
@@ -66,7 +66,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/', indexRouter);
-app.use('/', authenticationRouter);
+app.use('/auth', authenticationRouter);
 
 app.use('*', (req, res, next) => {
   const error = new Error('Page not found.');
